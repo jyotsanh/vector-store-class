@@ -1,0 +1,3 @@
+from .base import VectorStore
+
+class QdrantVectorStore(VectorStore): ...
