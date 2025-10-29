@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional, Dict
-
+from enum import Enum
 
 class VectorStore(ABC):
 
@@ -12,3 +12,10 @@ class VectorStore(ABC):
 
     @abstractmethod
     async def asimilarity_search(self, query:str) -> str: ...
+
+
+class VectorDB(Enum):
+    PINECONE = "pinecone"
+    MILVUS = "milvus"
+    QDRANT = "qdrant"
+    CHROMA = "chroma"

@@ -1,9 +1,5 @@
-from enum import Enum
-class VectorDB(Enum):
-    PINECONE = "pinecone"
-    MILVUS = "milvus"
-    QDRANT = "qdrant"
-    CHROMA = "chroma"
+from .base import VectorDB, VectorStore
+from .pinecone import PineconeVectorStore
 
 class VectorDispatcher:
     def __init__(self) -> None:
@@ -14,9 +10,14 @@ class VectorDispatcher:
         dispatcher = cls()
         return dispatcher
     
-    def register_pinecone_db(): ...
-    def register_milvus_db(): ...
-    def register_qdrant_db(): ...
-    def register_chroma_db(): ...
+    def register_pinecone_db(self) -> None:
+        self._vector_db[VectorDB.PINECONE] = PineconeVectorStore
 
-    def get_vector_db(self, vector_db_name:VectorDB): ...
+    def register_milvus_db(self): ...
+    def register_qdrant_db(self): ...
+    def register_chroma_db(self): ...
+
+    def get_vector_db(self, vector_db_name:VectorDB) -> VectorStore:
+        if vector_db_name in self._vector_db:
+            return self._vector_db[vector_db_name]
+        raise NotImplementedError(f"'{vector_db_name.value}' is not register")
