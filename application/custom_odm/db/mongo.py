@@ -5,9 +5,9 @@ import os
 
 DATABASE_HOST = os.getenv("DATABASE_HOST")
 
-
+# singelton mongo instance
 class MongoDatabaseConnector:
-    _instance:MongoClient | None
+    _instance:MongoClient | None = None
     def __new__(cls, *args, **kwargs) -> MongoClient:
         if cls._instance is None:
             try:
