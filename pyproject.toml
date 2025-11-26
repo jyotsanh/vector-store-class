@@ -1,7 +1,10 @@
 [project]
 name = "vector-store-class"
 version = "0.1.0"
-description = "Add your description here"
+description = "This is small guide for following best practice design patterns"
+authors = [
+  {name = "Jyotsan Hamal", email = "hamaljyotsan@gmail.com"},
+]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
