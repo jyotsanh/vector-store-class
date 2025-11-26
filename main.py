@@ -1,6 +1,13 @@
-def main():
-    print("Hello from vector-store-class!")
+from enum import Enum
+
+class Vectors(Enum):
+    PINECONE:str = "pinecone"
+    MILVUSE:str = "milvus"
+    CHROM:str = "chroma"
 
 
-if __name__ == "__main__":
-    main()
+
+inst = Vectors.CHROM
+
+print(inst.value)
+print(inst.name)

@@ -1,3 +1,5 @@
+# builder design pattern.
+
 from .base import VectorStore
 
 class PineconeVectorStore(VectorStore):
